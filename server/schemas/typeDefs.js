@@ -1,0 +1,86 @@
+const { gql } = require("apollo-server-express");
+// *QUESTION: Do I need to put ! to the required fields?
+const typeDefs = gql`
+  type User {
+    _id: ID
+    name: String
+    email: String
+    password: String
+    pet: Pet
+    posts: [Post]
+    bio: String
+    avatarURL: String
+  }
+
+  type Pet {
+    _id: ID
+    petOwner: User
+    petName: String
+    petAge: String
+    petType: String
+    petBreed: String
+    petFavFood: String
+    petFavActivities: String
+    petBio: String
+  }
+
+  type Post {
+    _id: ID
+    postAuthor: User
+    postText: String
+    postImageURL: String
+    createdAt: String
+    timestamp: String
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: ID
+    commentAuthor: String
+    commentText: String
+    createdAt: String
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    me: User
+    user(_id: ID!): User
+    posts: [Post]
+    post(postId: ID!): Post
+    pet(petId: ID!): Pet 
+  }
+
+  type Mutation {
+    register(name: String!, email: String!, password: String!): Auth
+    editUser(userId: ID!, newName: String, bio: String, avatarURL: String!): User
+    login(email: String!, password: String!): Auth
+    addPet(
+      petOwner: ID!, 
+      petName: String!, 
+      petAge: String, 
+      petType: String!, 
+      petBreed: String, 
+      petFavFood: String, 
+      petFavActivities: String, 
+      petBio: String
+    ): Pet
+    addPost(
+      postText: String!, 
+      postAuthor: ID!, 
+      postImageURL: String!
+    ): Post
+    removePost(postId: ID!): Post
+    addComment(
+      postId: ID!
+      commentText: String!
+      commentAuthor: String!
+    ): Post
+    removeComment(postId: ID!, commentId: ID!): Post
+  }
+`;
+
+module.exports = typeDefs;
