@@ -6,8 +6,21 @@ import { ADD_POST } from "../../utils/mutations";
 import CloudinaryUploadWidget from "../../components/Cloudinary/UploadWidget"; 
 
 import Auth from '../../utils/auth';
+import styled from 'styled-components';
 
-function CreatePostPage() {
+function CreatePostPage() {  
+  const cloudinaryBtnLg = styled.button`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid palevioletred;
+    color: palevioletred;
+    margin: 0.5em 1em;
+    padding: 0.25em 1em;
+    width: 400px;
+  `;
+
+  console.log(cloudinaryBtnLg);
+  
   const [postText, setPostText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
   const [postImageURL, setPostImageURL] = useState("");
@@ -63,23 +76,23 @@ function CreatePostPage() {
       <div className="text-center mb-5">
         <h2>📝 Create a Post</h2>
       </div>
-      <p
-        className={`m-0 ${
-          characterCount === 280 || error ? 'text-danger' : ''
-        }`}
-      >
-        Character Count: {characterCount}/280
-      </p>
+      <div className="ml-3">
+        <CloudinaryUploadWidget setPostImageURL={setPostImageURL} cloudinaryBtn={cloudinaryBtnLg} />
+      </div>
       <form onSubmit={handleSubmit}>
-        <CloudinaryUploadWidget setPostImageURL={setPostImageURL} />
-        <br />
+        <p
+          className={`ml-3 character-count ${
+            characterCount === 280 || error ? 'text-danger' : ''
+          }`}
+        >
+          Character Count: {characterCount}/280
+        </p>
         <textarea
           name="postText"
           placeholder="Enter post text"
           value={postText}
           onChange={handleInputChange}
         />
-        <br />
         <button className="btn btn-info" type="submit">Post</button>
       </form>
     </div>

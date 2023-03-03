@@ -21,10 +21,10 @@ function ProfilePage(props) {
   console.log('>>> logging userPosts: ', userPosts);
 
   const post = userPosts[0];
-  console.log(post);
-  console.log(post.postAuthor.pet._id);
+  // console.log(post);
+  // console.log(post.postAuthor.pet._id);
 
-  console.log('beginning pet');
+  // console.log('beginning pet');
 
   // Get pet info:
   const { loadingPet, data } = useQuery(QUERY_PET, {
@@ -32,15 +32,15 @@ function ProfilePage(props) {
     variables: { petId: post.postAuthor.pet._id },
   });
 
-  console.log('pet data: ', data);
+  // console.log('pet data: ', data);
 
   const pet = data ? data.pet : [];
-  console.log('pet: ', pet);
+  // console.log('pet: ', pet);
 
   // Get logged in user data:
   const { loading, data: meData } = useQuery(QUERY_ME);
   const me = meData?.me || []; 
-  console.log('me: ', me);
+  // console.log('me: ', me);
 
   const handleClickUser = async (event) => {
     event.preventDefault();

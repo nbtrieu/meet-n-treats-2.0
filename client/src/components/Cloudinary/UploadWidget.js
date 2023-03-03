@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 
 class CloudinaryUploadWidget extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class CloudinaryUploadWidget extends Component {
   }
 
   render() {
+    const { cloudinaryBtn } = this.props;
     return (
       <button id="upload_widget" className="cloudinary-button">
         Add a Photo

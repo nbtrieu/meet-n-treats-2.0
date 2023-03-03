@@ -1,24 +1,9 @@
-import { useQuery } from "@apollo/client";
-import Login from "../../components/Login";
-
-import { QUERY_ME } from "../../utils/queries";
-import { QUERY_POSTS } from "../../utils/queries";
-
 import { Link } from "react-router-dom";
 
 import PostCard from "../../components/PostCard/PostCard";
 
 function Home(props) {
   const { posts } = props;
-
-  // const { loading, data } = useQuery(QUERY_ME);
-  // const me = data?.me || []; // *QUESTION: Why set to empty array instead of empty object? To avoid null or undefined references
-
-  // if (me.length === 0) {
-  //   return (
-  //     <Login />
-  //   )
-  // }
 
   return (
     <div className="flex-column align-center max-100-vh">

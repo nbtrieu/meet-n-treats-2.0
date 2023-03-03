@@ -6,14 +6,14 @@ import CloudinaryUploadWidget from "../../components/Cloudinary/UploadWidget";
 
 import Auth from '../../utils/auth';
 
-export default function EditUser() {
+export default function EditUser() {  
+  let isSubmitted = false;
+  
   const [formState, setFormState] = useState({
     userId: Auth.getUser().data._id,
     newName: "",
     bio: "",
   });
-
-  // console.log("logging Auth.getUser.data: ", Auth.getUser.data)
 
   const [avatarURL, setAvatarURL] = useState("");
 
@@ -22,10 +22,10 @@ export default function EditUser() {
   // Get logged in user data:
   const { loading, data: meData } = useQuery(QUERY_ME);
   const me = meData?.me || []; 
-  console.log('me: ', me);
+  // console.log('me: ', me);
 
   const handleInputChange = ({ target: { name, value } }) => {
-    console.log(name, value);
+    // console.log(name, value);
     setFormState({ ...formState, [name]: value });
     if (name === 'avatarURL') {
       setAvatarURL(value);
@@ -35,7 +35,6 @@ export default function EditUser() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      // console.log('postImageURL: ', postImageURL);
       const { data } = await editUser({
         variables: {
           ...formState,
@@ -44,7 +43,12 @@ export default function EditUser() {
       });
 
       setFormState("");
-      window.location.replace('/profiles');
+      // isSubmitted = true;
+      // if (isSubmitted) {
+      //   setTimeout(() => {
+      //     document.getElementById('submitted-message').innerHTML = 'Your changes have been saved.'
+      //   }, 5000);
+      // }
 
     } catch (error) {
       console.error('>>> handleSubmit error: ', error);
@@ -55,6 +59,12 @@ export default function EditUser() {
     <div className="app-postcard_page page create-form-card flex-column align-start">
       <div className="mb-5">
         <h2 className="text-center">⚙️ Edit User Profile</h2>
+      </div>
+      <div className="flex-row mb-3 ml-3">
+        <h4>Avatar: </h4>
+        <div className="ml-1">
+          <CloudinaryUploadWidget className="col-1" setPostImageURL={setAvatarURL} />
+        </div>
       </div>
       <form onSubmit={handleFormSubmit} className="row">
         <label className="col-1">
@@ -77,21 +87,17 @@ export default function EditUser() {
           defaultValue={me.bio}
           onChange={handleInputChange}
         />
-        <label className="col-1">
-          <h4>Avatar: </h4>
-        </label>
-        {/* <CloudinaryUploadWidget setPostImageURL={setPostImageURL} className="col-1" /> */}
-        <input
-          type="text"
-          className="col-1 edit-form"
-          name="avatarURL"
-          value={avatarURL}
-          onChange={handleInputChange}
-        />
-        <div className="flex-row justify-center">
+        <div className="mx-auto">
           <button type="submit" className="btn btn-sm btn-submit">Submit</button>
         </div>
       </form>
+      <div>
+        {isSubmitted ? (
+          <p id="submitted-message"></p>
+        ) : (
+          <div>{null}</div>
+        )}
+      </div>
     </div>
   )
 }

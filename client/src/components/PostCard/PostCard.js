@@ -6,7 +6,11 @@ export default function PostCard(props) {
     <div className=''>
       <div className='app-postcard_data-author'>
         <div className='app-postcard_data-author-avatar'>
-          <img src={'https://res.cloudinary.com/dnwrm14k9/image/upload/v1675571532/avatar_if5map.png'} alt='avatar' />
+          {postsData.postAuthor.avatarURL ? (
+            <img src={postsData.postAuthor.avatarURL} alt='avatar' />
+          ) : (
+            <img src={"https://res.cloudinary.com/dnwrm14k9/image/upload/v1675571532/avatar_if5map.png"} alt='avatar' />
+          )}
         </div>
         <h4>{postsData.postAuthor.name}</h4>
       </div>

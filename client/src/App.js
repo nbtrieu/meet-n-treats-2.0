@@ -6,6 +6,10 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
+import { useQuery } from "@apollo/client";
+import { useState, useEffect } from "react";
+
+import { QUERY_POSTS } from "./utils/queries";
 
 import MainApp from "./components/MainApp/MainApp";
 
@@ -29,6 +33,19 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // const [state, setState] = useState([])
+  // const { loadingPosts, data: postsData } = useQuery(QUERY_POSTS);
+
+  // useEffect(() => {
+  //   console.log('huh?');
+  //   setState(postsData)
+  // }, []);
+
+    // useEffect(() => {
+    //   useQuery(QUERY_POSTS).then(
+    //         res => setState(res.data)
+    //     )
+    // }, [])
   return (
     <ApolloProvider client={client}>
       <MainApp />

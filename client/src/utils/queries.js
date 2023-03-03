@@ -70,6 +70,7 @@ export const QUERY_POSTS = gql`
           petFavActivities
           petBio
         }
+        avatarURL
       }
       postText
       postImageURL
