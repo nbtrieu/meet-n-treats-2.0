@@ -11,7 +11,9 @@ function Sidebar(props) {
   return (
     <aside className="flex-column space-between py-1 min-100-vh">
       <Link className="text-dark no-underline" to="/">
-        <h1 className='app-title'>🐾 MEET & TREATS 🍪</h1>
+        <div className='ml-4'>
+          <h1 className='app-title'>Meet & Treats</h1>
+        </div>
       </Link>
       {props.children}
       <br></br>

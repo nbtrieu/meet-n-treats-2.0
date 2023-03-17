@@ -62,38 +62,42 @@ function ProfilePage(props) {
       
       <div className="row">
         <div className="col text-left mt-5">
-          <h2>🪪 Your Profile</h2>
+          <h3 className="text-bold">🪪 Your Profile</h3>
         </div>
         <div className="col">
           <button className="btn btn-info mt-4" type="submit" onClick={handleClickUser}>Edit</button>
         </div>
       </div>
       
-      <div className="user-info-card my-5 flex-column">
-        <img src={me.avatarURL} className="avatar" />
-        <div className="flex-row mb-2">
-          <h4 className="text-info-field text-info">Name: </h4>
-          <span className="ml-5">
-            <h4>{me.name}</h4>
-          </span>
+      <div className="user-info-card my-5 flex-row">
+        <div className="col-2 mt-3">
+          <img src={me.avatarURL} className="avatar" />
         </div>
-        <div className="flex-row mb-2">
-          <h4 className="text-info-field text-info">Email: </h4>
-          <span className="ml-5">
-            <h4>{me.email}</h4>
-          </span>
-        </div>
-        <div className="flex-row mb-2">
-          <h4 className="text-info-field text-info">Bio: </h4>
-          <span className="ml-5">
-            <h4>{me.bio}</h4>
-          </span>
+        <div className="col-8">
+          <div className="flex-row mb-2">
+            <h4 className="text-info-field text-info">Name: </h4>
+            <span className="ml-5">
+              <h4>{me.name}</h4>
+            </span>
+          </div>
+          <div className="flex-row mb-2">
+            <h4 className="text-info-field text-info">Email: </h4>
+            <span className="ml-5">
+              <h4>{me.email}</h4>
+            </span>
+          </div>
+          <div className="flex-row mb-2">
+            <h4 className="text-info-field text-info">Bio: </h4>
+            <span className="ml-5">
+              <h4>{me.bio}</h4>
+            </span>
+          </div>
         </div>
       </div>
 
       <div className="row">
         <div className="col text-left mt-5">
-          <h2>🐾 Your Pet Profile</h2>
+          <h3 className="text-bold">🐾 Your Pet Profile</h3>
         </div>
         <div className="col">
           <button className="btn btn-info mt-4" type="submit" onClick={handleClickPet}>Edit</button>
@@ -174,7 +178,10 @@ function ProfilePage(props) {
       
       </div>
       <div className="text-left mt-5">
-        <h2>🖼️ Your Posts</h2>
+        <h3 className="text-bold">
+          <span></span>
+          🖼️ Your Posts
+        </h3>
       </div>
       <div className="flex-column align-center max-100-vh w-50">
         {userPosts.length > 0 ? userPosts.map((post) => (

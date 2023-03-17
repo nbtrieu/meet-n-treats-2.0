@@ -12,7 +12,7 @@ export default function PostCard(props) {
             <img src={"https://res.cloudinary.com/dnwrm14k9/image/upload/v1675571532/avatar_if5map.png"} alt='avatar' />
           )}
         </div>
-        <h4>{postsData.postAuthor.name}</h4>
+        <h5 className='text-bold'>{postsData.postAuthor.name}</h5>
       </div>
       <p>{postsData.createdAt}</p>
       {/* Render uploaded image from Cloudinary: */}
