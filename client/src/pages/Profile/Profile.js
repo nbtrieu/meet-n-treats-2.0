@@ -55,9 +55,9 @@ function ProfilePage(props) {
   }
 
   return (
-    <div className="flex-column page negative-top-margin">
-      <div className="text-primary border-bottom">
-        <h1>✨ Welcome, <span className="text-pink">{me.name} ✨</span></h1>
+    <div className="flex-column page negative-top-margin ml-7">
+      <div className="text-primary border-bottom text-center">
+        <h1>Welcome, <span className="text-pink">{me.name}</span></h1>
       </div>
       
       <div className="row">
@@ -104,78 +104,88 @@ function ProfilePage(props) {
         </div>
       </div>
 
-      <div className="pet-info-card mt-5 flex-column">
-        {pet.petName ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">Name: </h4>
-            <span className="ml-5">
-              <h4>{pet.petName}</h4>
-            </span>
+      <div className="pet-info-card mt-5 flex-row">
+        <div className="row">
+          <div className="col-5">
+            {pet.petName ? (
+              <div className="flex-row mb-2">
+                <h4 className="text-info-field text-info">Name: </h4>
+                <span className="ml-5">
+                  <h4>{pet.petName}</h4>
+                </span>
+              </div>
+            ) : (
+              <div className="display-none"></div>
+            )}
+            {pet.petAge ? (
+              <div className="flex-row mb-2">
+                <h4 className="text-info-field text-info">Age: </h4>
+                <span className="ml-5">
+                  <h4>{pet.petAge}</h4>
+                </span>
+              </div>
+            ) : (
+              <div className="display-none"></div>
+            )}
+            {pet.petType ? (
+              <div className="flex-row mb-2">
+                <h4 className="text-info-field text-info">Type: </h4>
+                <span className="ml-5">
+                  <h4>{pet.petType}</h4>
+                </span>
+              </div>
+            ) : (
+              <div className="display-none"></div>
+            )}
           </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petAge ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">Age: </h4>
-            <span className="ml-5">
-              <h4>{pet.petAge}</h4>
-            </span>
+          <div className="col-5">
+              {pet.petBreed ? (
+                <div className="flex-row mb-2">
+                  <h4 className="text-info-field text-info">Breed: </h4>
+                  <span className="ml-5">
+                    <h4>{pet.petBreed}</h4>
+                  </span>
+                </div>
+              ) : (
+                <div className="display-none"></div>
+              )}
+              {pet.petFavFood ? (
+                <div className="flex-row mb-2">
+                  <h4 className="text-info-field text-info">FavFood: </h4>
+                  <span className="ml-5">
+                    <h4>{pet.petFavFood}</h4>
+                  </span>
+                </div>
+              ) : (
+                <div className="display-none"></div>
+              )}
+              {pet.petFavActivities ? (
+                <div className="flex-row mb-2">
+                  <h4 className="text-info-field text-info">FavActivities: </h4>
+                  <span className="ml-5">
+                    <h4>{pet.petFavActivities}</h4>
+                  </span>
+                </div>
+              ) : (
+                <div className="display-none"></div>
+              )}
           </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petType ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">Type: </h4>
-            <span className="ml-5">
-              <h4>{pet.petType}</h4>
-            </span>
+          
+          <div className="col-9">
+            {pet.petBio ? (
+              <div className="flex-row">
+                <h4 className="text-info-field text-info">Bio: </h4>
+                <span className="ml-5">
+                  <h4>{pet.petBio}</h4>
+                </span>
+              </div>
+            ) : (
+              <div className="display-none"></div>
+            )}
           </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petBreed ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">Breed: </h4>
-            <span className="ml-5">
-              <h4>{pet.petBreed}</h4>
-            </span>
-          </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petFavFood ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">FavFood: </h4>
-            <span className="ml-5">
-              <h4>{pet.petFavFood}</h4>
-            </span>
-          </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petFavActivities ? (
-          <div className="flex-row mb-2">
-            <h4 className="text-info-field text-info">FavActivities: </h4>
-            <span className="ml-5">
-              <h4>{pet.petFavActivities}</h4>
-            </span>
-          </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-        {pet.petBio ? (
-          <div className="flex-row">
-            <h4 className="text-info-field text-info">Bio: </h4>
-            <span className="ml-5">
-              <h4>{pet.petBio}</h4>
-            </span>
-          </div>
-        ) : (
-          <div className="display-none"></div>
-        )}
-      
+          
+        </div>
+        
       </div>
       <div className="text-left mt-5">
         <h3 className="text-bold">

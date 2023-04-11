@@ -19,7 +19,7 @@ module.exports = {
       req.user = data;
     } catch {
       console.log("Invalid token");
-      // window.location.replace('/login');
+      window.location.replace('/login');
     }
 
     return req;

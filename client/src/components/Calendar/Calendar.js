@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 
-const MyCalendar = () => {
+const MyCalendar = ({playDates}) => {
   const [date, setDate] = useState(new Date());
 
   const onChange = (selectedDate) => {
@@ -43,9 +43,14 @@ const MyCalendar = () => {
           backgroundColor: "#f2f2f2",
         }}
         calendarType="US"
+        
       />
       <p style={{ fontSize: "1.2rem", marginTop: "20px" }}>
         Selected date: {date.toString()}
+      </p>
+      <p>
+        Playdate scheduled: 
+        {}
       </p>
     </div>
   );

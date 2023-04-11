@@ -52,7 +52,7 @@ function PlayDatePage() {
                 id="date"
                 value={selectedDate ? selectedDate.toDateString() : ''}
                 onClick={() => setShowCalendar(true)}
-                // placeholder="Click to select a date"
+                placeholder="Click to select a date"
               />
               {showCalendar && 
                 <MyCalendar 
