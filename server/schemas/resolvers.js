@@ -45,6 +45,22 @@ const resolvers = {
         { new: true }
       );
     },
+    editPet: async (parent, { petId, petOwner, newName, newAge, newType, newBreed, newFavFood, newFavActivities, newBio}) => {
+      return await Pet.findByIdAndUpdate(
+        { _id: petId },
+        { 
+          petOwner: petOwner,
+          petName: newName,
+          petAge: newAge,
+          petType: newType,
+          petBreed: newBreed,
+          petFavFood: newFavFood,
+          petFavActivities: newFavActivities,
+          petBio: newBio,
+        },
+        { new: true }
+      );
+    },
     addPet: async (parent, { petOwner, petName, petAge, 
       petType, petBreed, petFavFood, petFavActivities, petBio }) => {
       const pet = await Pet.create({ petOwner, petName, petAge, 

@@ -20,6 +20,7 @@
 html,
 body {
   min-height: 100%;
+  margin: 0;
 }
 
 nav, aside {
@@ -343,7 +344,7 @@ p {
 }
 
 .app-title {
-  font-family: 'Sofia', cursive;
+  font-family: 'Sofia', cursive !important;
   font-size: 3rem;
 }
 
@@ -610,7 +611,7 @@ textarea {
 }
 
 .login-form-card {
-  width: 65%;
+  width: 25%;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -621,6 +622,15 @@ textarea {
   border: 10px solid white;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+.login {
+  height: 100%;
+  /* width: 33%; */
+  margin-left: auto;
+  margin-right: auto;
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 0px 10px rgba(0,0,0,0.3); */
 }
 
 .pet-form-card {

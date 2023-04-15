@@ -24,6 +24,24 @@ export const EDIT_USER = gql`
   }
 `;
 
+export const EDIT_PET = gql`
+mutation Mutation($petId: ID!, $newName: String, $newAge: String, $newType: String, $newBreed: String, $newFavFood: String, $newFavActivities: String, $newBio: String, $petOwner: ID!) {
+  editPet(petId: $petId, newName: $newName, newAge: $newAge, newType: $newType, newBreed: $newBreed, newFavFood: $newFavFood, newFavActivities: $newFavActivities, newBio: $newBio, petOwner: $petOwner) {
+    _id
+    petName
+    petAge
+    petType
+    petBreed
+    petFavFood
+    petFavActivities
+    petBio
+    petOwner {
+      _id
+    }
+  }
+}
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

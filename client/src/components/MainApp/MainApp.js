@@ -14,6 +14,7 @@ import Market from "../../pages/Market";
 import MarketSell from "../../pages/MarketSell";
 import MarketBuy from "../../pages/MarketBuy";
 import EditUser from "../../pages/EditUser/EditUser";
+import EditPet from "../../pages/EditPet/EditPet";
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Login from "../Login";
@@ -21,6 +22,7 @@ import Register from "../Register";
 import Sidebar from "../Sidebar";
 import Nav from "../Nav";
 import { useState, useEffect } from "react";
+import Auth from '../../utils/auth';
 
 export default function MainApp() {
   // const { loadingPosts, data: postsData } = useQuery(QUERY_POSTS);
@@ -51,15 +53,21 @@ export default function MainApp() {
   }
   var posts = postsData ? postsData.posts : [];
   console.log('posts: ', posts);
+
+  const isLoggedIn = Auth.loggedIn();
   
   return (
     <Router>
       <div className="main">
-        <nav>
-          <Sidebar>
-            <Nav></Nav>
-          </Sidebar>
-        </nav>
+        {isLoggedIn ? (
+          <nav>
+            <Sidebar>
+              <Nav></Nav>
+            </Sidebar>
+          </nav>
+        ) : (
+          <div></div>
+        )}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -75,7 +83,8 @@ export default function MainApp() {
             <Route path="/marketplace/buy" element={<MarketBuy />} />
             <Route path="/marketplace/sell" element={<MarketSell />} />
             <Route path="/posts/:postId" element={<SinglePost posts={posts} />} />
-            <Route path="/profiles/user/edit" element={<EditUser />}/> 
+            <Route path="/profiles/user/edit" element={<EditUser />}/>
+            <Route path="/profiles/pet/edit" element={<EditPet />}/>
           </Route>
         </Routes>
       </div>

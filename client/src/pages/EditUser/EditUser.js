@@ -9,6 +9,11 @@ import Auth from '../../utils/auth';
 export default function EditUser() {  
   let isSubmitted = false;
   
+  // Get logged in user data:
+  const { loading, data: meData } = useQuery(QUERY_ME);
+  const me = meData?.me || []; 
+  console.log('me: ', me);
+
   const [formState, setFormState] = useState({
     userId: Auth.getUser().data._id,
     newName: "",
@@ -19,9 +24,9 @@ export default function EditUser() {
 
   const [editUser, { error }] = useMutation(EDIT_USER);
 
-  // Get logged in user data:
-  const { loading, data: meData } = useQuery(QUERY_ME);
-  const me = meData?.me || []; 
+  // // Get logged in user data:
+  // const { loading, data: meData } = useQuery(QUERY_ME);
+  // const me = meData?.me || []; 
   // console.log('me: ', me);
 
   const handleInputChange = ({ target: { name, value } }) => {
